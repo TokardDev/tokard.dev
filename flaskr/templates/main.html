@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Redirect</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}">
+</head>
+<body>
+    <div class="context">
+        
+    <div class="d-flex justify-content-center align-items-center">
+        <div>
+            <img class="tokalogo" style="padding-top: 5vh;" src="{{ url_for('static', filename='imgs/tokachannel.webp') }}"/>
+
+            <div style="padding-left: 10px; padding-right: 10px;">
+                <a href="/add-redirect" style="text-decoration: none;" draggable="false">
+                <div class="card" style="width: 100%;">
+                    <div class="card-body text-light text-center">
+                        <h2>URL Shortener</h2>
+                    </div>
+                </div>
+                </a>
+
+                <!--
+                <a href="/remove-bg" style="text-decoration: none;">
+                    <div class="card" style="width: 100%; margin-top: 10px;" draggable="false">
+                        <div class="card-body text-light text-center">
+                            <h2>Remove Background</h2>
+                        </div>
+                    </div>
+                </a>-->
+            </div>
+        </div>
+    </div>
+    </div>
+    
+     <div class="area" >
+        <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+    </div >
+
+</body>
+</html>
