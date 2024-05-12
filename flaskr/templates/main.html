@@ -15,13 +15,36 @@
             <img class="tokalogo" style="padding-top: 5vh;" src="{{ url_for('static', filename='imgs/tokachannel.webp') }}"/>
 
             <div style="padding-left: 10px; padding-right: 10px;">
+
+                {% if 'user' in session %}
                 <a href="/add-redirect" style="text-decoration: none;" draggable="false">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body text-light text-center">
-                        <h2>URL Shortener</h2>
+                    <div class="card" style="width: 100%; margin-bottom: 20px;">
+                        <div class="card-body text-light text-center">
+                            <h2>URL Shortener</h2>
+                        </div>
                     </div>
-                </div>
                 </a>
+
+                <a href="/logout" style="text-decoration: none;" draggable="false">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body text-light text-center">
+                            <h2>Logout</h2>
+                        </div>
+                    </div>
+                </a>
+
+                {% else %}
+
+                <a href="/login" style="text-decoration: none;" draggable="false">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body text-light text-center">
+                            <h2>Login</h2>
+                        </div>
+                    </div>
+                </a>
+
+                {% endif %}
+
 
                 <!--
                 <a href="/remove-bg" style="text-decoration: none;">

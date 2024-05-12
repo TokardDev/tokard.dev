@@ -1,8 +1,35 @@
 import sqlite3
 
 import click
-from flask import current_app, g
+from flask import current_app, g, Flask
+from flask_bcrypt import Bcrypt
 
+api = Flask(__name__)
+bcrypt = Bcrypt(api)
+
+def check_auth(username, password):
+    print(username, password)
+    db = get_db()
+    result = db.execute("SELECT password FROM users WHERE username=?", (username,)).fetchone()
+    db.close()
+
+    print(result)
+
+    if result is not None:
+        hashed_password = result[0]
+        return bcrypt.check_password_hash(hashed_password, password)
+    return False
+
+
+def add_admin(username, password):
+    db = get_db()
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+    result = db.execute("SELECT username FROM users WHERE username=?", (username,)).fetchone()
+    if result is None:
+        db.execute("INSERT INTO users (username, password) VALUES (?, ?)", (username, hashed_password))
+        db.commit()
+        return True
+    return False
 
 def get_db():
     if 'db' not in g:

@@ -1,9 +1,17 @@
 import os
 
-from flask import Flask, render_template, request, flash
-from flaskr.db import get_db, get_url_from_code, insert_url
+from flask import Flask, render_template, request, flash, redirect, url_for, session
+from flaskr.db import get_db, get_url_from_code, insert_url, check_auth, add_admin
+from functools import wraps
 
-
+def login_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'user' not in session:
+            flash('You need to be logged in to access this page', 'alert-danger')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated
 
 
 def create_app(test_config=None):
@@ -11,7 +19,7 @@ def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
-        SECRET_KEY='dev',
+        SECRET_KEY='Z9AU72Hp4jVhuLiztqXmPy102kS0qGJU',
         DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
     )
 
@@ -41,6 +49,7 @@ def create_app(test_config=None):
         return render_template('main.html')
     
     @app.route('/add-redirect', methods=['POST', 'GET'])
+    @login_required
     def add_redirect():
         if request.method == 'POST':
             db = get_db()
@@ -54,5 +63,38 @@ def create_app(test_config=None):
         else:
             return render_template('add_redirect.html')
 
+
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        if request.method == 'POST':
+            username = request.form['username']
+            password = request.form['password']
+
+            auth = check_auth(username, password)
+
+            if not auth:
+                flash('Invalid username or password', 'alert-danger')
+                return redirect(url_for('login'))
+
+            # Si les informations de connexion sont correctes, on connecte l'utilisateur
+            session['user'] = username
+            return redirect(url_for('main'))
+
+        if 'user' in session:
+            return redirect(url_for('main'))
+
+        return render_template('login.html')
+    
+    @app.route('/logout')
+    def logout():
+        session.pop('user', None)
+        return redirect(url_for('main'))
+
+    """
+    @app.route('/add_user')
+    def add_user():
+        add_admin("tokard", "589T8\A`2x#kkN6")
+        return "User added"
+    """
 
     return app

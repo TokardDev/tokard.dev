@@ -1,6 +1,9 @@
-DROP TABLE IF EXISTS redirects;
-
-CREATE TABLE redirects (
+CREATE TABLE IF NOT EXISTS redirects (
   code TEXT PRIMARY KEY,
   link TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  username TEXT NOT NULL PRIMARY KEY,
+  password TEXT NOT NULL
 );
