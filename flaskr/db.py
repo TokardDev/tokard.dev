@@ -8,12 +8,9 @@ api = Flask(__name__)
 bcrypt = Bcrypt(api)
 
 def check_auth(username, password):
-    print(username, password)
     db = get_db()
     result = db.execute("SELECT password FROM users WHERE username=?", (username,)).fetchone()
     db.close()
-
-    print(result)
 
     if result is not None:
         hashed_password = result[0]

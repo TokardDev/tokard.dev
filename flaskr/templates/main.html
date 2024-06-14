@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Redirect</title>
+    <title>Tokard.dev</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imgs/favicon.png') }}">
 </head>
 <body>
     <div class="context">
@@ -16,11 +17,19 @@
 
             <div style="padding-left: 10px; padding-right: 10px;">
 
+                <a href="/links" style="text-decoration: none;" draggable="false">
+                    <div class="card" style="width: 100%; margin-bottom: 20px;">
+                        <div class="card-body text-light text-center">
+                            <h2 class="buttonlinks">Social Networks</h2>
+                        </div>
+                    </div>
+                </a>
+
                 {% if 'user' in session %}
                 <a href="/add-redirect" style="text-decoration: none;" draggable="false">
                     <div class="card" style="width: 100%; margin-bottom: 20px;">
                         <div class="card-body text-light text-center">
-                            <h2>URL Shortener</h2>
+                            <h2 class="buttonlinks">URL Shortener</h2>
                         </div>
                     </div>
                 </a>
@@ -28,7 +37,7 @@
                 <a href="/logout" style="text-decoration: none;" draggable="false">
                     <div class="card" style="width: 100%;">
                         <div class="card-body text-light text-center">
-                            <h2>Logout</h2>
+                            <h2 class="buttonlinks">Logout</h2>
                         </div>
                     </div>
                 </a>
@@ -38,22 +47,13 @@
                 <a href="/login" style="text-decoration: none;" draggable="false">
                     <div class="card" style="width: 100%;">
                         <div class="card-body text-light text-center">
-                            <h2>Login</h2>
+                            <h2 class="buttonlinks">Login</h2>
                         </div>
                     </div>
                 </a>
 
                 {% endif %}
 
-
-                <!--
-                <a href="/remove-bg" style="text-decoration: none;">
-                    <div class="card" style="width: 100%; margin-top: 10px;" draggable="false">
-                        <div class="card-body text-light text-center">
-                            <h2>Remove Background</h2>
-                        </div>
-                    </div>
-                </a>-->
             </div>
         </div>
     </div>

@@ -43,10 +43,17 @@ def create_app(test_config=None):
     from . import shorter
     app.register_blueprint(shorter.bp)
 
+    from . import faker
+    app.register_blueprint(faker.bp)
+
 
     @app.route('/')
     def main():
         return render_template('main.html')
+    
+    @app.route('/links')
+    def links():
+        return render_template('links.html')
     
     @app.route('/add-redirect', methods=['POST', 'GET'])
     @login_required
