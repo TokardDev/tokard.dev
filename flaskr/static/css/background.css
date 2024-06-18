@@ -6,17 +6,32 @@ body{
     background: linear-gradient(0deg, rgba(68,175,255,1) 0%, rgba(0,132,255,1) 100%);
 }
 
+@font-face {
+    font-family: 'PFSquareSansProBold';
+    src: url('fonts/PFSquareSansProBold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PFSquareSansProMedium';
+    src: url('fonts/PFSquareSansProMedium.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .card {
     width: 100%;
     max-width: 778px;
     background: rgba(255, 255, 255, 0.17);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-    backdrop-filter: blur(7.3px);
-    -webkit-backdrop-filter: blur(7.3px);
+    backdrop-filter: blur(2px);
     border-color: rgba(0, 0, 0, 0.0);
     z-index: 2;
 }
+
+
 
 .tokalogo {
     max-width: 100%;
@@ -31,6 +46,38 @@ body{
 .area{
     width: 100%;
     height:100vh;
+}
+
+.theL {
+    margin-top: 2rem;
+    font-family: 'PFSquareSansProMedium';
+    font-size: 7.5rem;
+    line-height: 7rem; /* Ajuste cette valeur selon tes besoins */
+    color: white;
+    text-align: left;
+    height: 7rem; /* Utilise la même valeur que line-height */
+    align-items: center; /* Centre le texte verticalement */
+}
+
+
+.tokardL {
+    width: 100%;
+    font-family: 'PFSquareSansProBold';
+    font-size: 10rem;
+    line-height: 7rem;
+    height: 7rem;
+    color: white;
+    text-align: center;
+
+}
+
+.launcherL {
+    font-family: 'PFSquareSansProMedium';
+    line-height: 7rem; /* Ajuste cette valeur selon tes besoins */
+    height: 7rem;
+    font-size: 7.5rem;
+    color: white;
+    text-align: right;
 }
 
 .circles{
@@ -113,6 +160,24 @@ body{
 @media (min-width: 1000px) {
     .buttonlinks {
       font-size: 3rem;
+    }
+}
+
+@media (min-width: 1000px) {
+    .theL {
+      font-size: 3.75rem;
+      line-height: 3rem;
+      height: 3rem;
+    }
+    .tokardL { 
+      font-size: 5rem;
+      line-height: 4rem;
+      height: 4rem;
+    }
+    .launcherL {
+        font-size: 3.75rem;
+        line-height: 3rem;
+        height: 3rem;
     }
 }
 
