@@ -5,23 +5,16 @@
     <title>Tokard.dev</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}">
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imgs/favicon.png') }}">
+    <link rel="stylesheet" href="static/css/background.css">
+    <link rel="icon" type="image/x-icon" href="static/imgs/favicon.png">
+    <link rel="preload" href="static/imgs/tokachannel.webp" as="banner">
 </head>
 <body>
     <div class="context">
         
-    <div class="d-flex justify-content-center align-items-centers">
-        <div>
-            <a href="/" style="text-decoration: none;" draggable="false" class="sidebar">
-                <div class="card" style="width: 100%; margin-bottom: 20px; align-items: center; background : rgba(255, 255, 255, 0); box-shadow: 0 4px 30px rgba(0, 0, 0, 0);backdrop-filter: blur(0spx);">
-                    <div>
-                        <div class="theL">the</div>
-                        <div class="tokardL">Tokard.dev</div>
-                        <div class="launcherL">launcher</div>
-                    </div>
-                </div>
-            </a>
+    <div class="d-flex justify-content-center align-items-centers hidden">
+        <div style="margin-top: 20px;">
+            
 
             <div style="padding-left: 10px; padding-right: 10px">
 
@@ -66,6 +59,7 @@
         </div>
     </div>
     </div>
+
     
      <div class="area" >
         <ul class="circles">

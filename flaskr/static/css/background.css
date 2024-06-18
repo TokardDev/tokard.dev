@@ -1,5 +1,3 @@
-
-
 body{
     font-family: 'Exo', sans-serif;
     background: rgb(68,175,255);
@@ -8,14 +6,14 @@ body{
 
 @font-face {
     font-family: 'PFSquareSansProBold';
-    src: url('fonts/PFSquareSansProBold.ttf');
+    src: url('fonts/PFSquareSansProBold.woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'PFSquareSansProMedium';
-    src: url('fonts/PFSquareSansProMedium.ttf');
+    src: url('fonts/PFSquareSansProMedium.woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -31,12 +29,6 @@ body{
     z-index: 2;
 }
 
-
-
-.tokalogo {
-    max-width: 100%;
-}
-
 .context {
     width: 100%;
     position: absolute;
@@ -48,37 +40,6 @@ body{
     height:100vh;
 }
 
-.theL {
-    margin-top: 2rem;
-    font-family: 'PFSquareSansProMedium';
-    font-size: 7.5rem;
-    line-height: 7rem; /* Ajuste cette valeur selon tes besoins */
-    color: white;
-    text-align: left;
-    height: 7rem; /* Utilise la même valeur que line-height */
-    align-items: center; /* Centre le texte verticalement */
-}
-
-
-.tokardL {
-    width: 100%;
-    font-family: 'PFSquareSansProBold';
-    font-size: 10rem;
-    line-height: 7rem;
-    height: 7rem;
-    color: white;
-    text-align: center;
-
-}
-
-.launcherL {
-    font-family: 'PFSquareSansProMedium';
-    line-height: 7rem; /* Ajuste cette valeur selon tes besoins */
-    height: 7rem;
-    font-size: 7.5rem;
-    color: white;
-    text-align: right;
-}
 
 .circles{
     position: absolute;
@@ -163,21 +124,13 @@ body{
     }
 }
 
+.tokalogo {
+    width: 10vw;
+}
+
 @media (min-width: 1000px) {
-    .theL {
-      font-size: 3.75rem;
-      line-height: 3rem;
-      height: 3rem;
-    }
-    .tokardL { 
-      font-size: 5rem;
-      line-height: 4rem;
-      height: 4rem;
-    }
-    .launcherL {
-        font-size: 3.75rem;
-        line-height: 3rem;
-        height: 3rem;
+    .tokalogo {
+        width: 50vw;
     }
 }
 
