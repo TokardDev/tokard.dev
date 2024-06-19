@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="3866" height="1614" viewBox="0 0 3866 1614">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 315px;
+        font-weight: 500;
+      }
+
+      .cls-1, .cls-2 {
+        fill: #fff;
+        font-family: "PF Square Sans Pro";
+      }
+
+      .cls-2 {
+        font-size: 392px;
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text id="the" class="cls-1" transform="translate(-14.469 446.891) scale(1.991)">the</text>
+  <text id="launcher" class="cls-1" transform="translate(1534.299 1608.027) scale(1.991)">launcher</text>
+  <text id="Tokard.dev" class="cls-2" transform="translate(-4.512 1080.15) scale(1.991)">Tokard.dev</text>
+</svg>

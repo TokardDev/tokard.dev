@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='imgs/favicon.png') }}">
 </head>
 <body>
     <div class="context">
@@ -20,25 +21,52 @@
         </div>
 
         <div class=" d-flex flex-column justify-content-center align-items-center">
+                <div class="d-flex justify-content-center" style="width: 100%; overflow-y: auto; max-height: 100vh;">
+                    <div style="z-index: 1;">
+                        <div style="padding-left: 10px; padding-right: 10px; margin-top: 60px;">
+                            <a href="/" style="text-decoration: none;" draggable="false">
+                                <div class="card" style="width: 100%; margin-bottom: 60px; background: rgba(255, 255, 255, 0); border-radius: 0px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0); backdrop-filter: blur(0px);">
+                                    <img src="https://tokarddev.github.io/tokard.dev/flaskr/static/imgs/tokachannel.svg" class="card-img-top" alt="logo">
+                                </div>
+                            </a>
+                            
             
-                <a href="/" style="z-index: 2;" draggable="false">
-                    <img class="tokalogo" style="padding-top: 5vh; z-index: 2;" draggable="false" src="{{ url_for('static', filename='imgs/tokachannel.webp') }}"/>
-                </a>
-                <div style="padding-left: 10px; padding-right: 10px; width: 100%;" class="d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-body text-light">
-                            <h1 class="card-title text-center">Login</h1>
-                            <form method="POST" action="{{ url_for('login') }}">
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username">
+                                <div class="card" style="width: 100%; margin-bottom: 20px;">
+                                    <div class="card-body text-light">
+                                        <form method="POST" action="{{ url_for('login') }}" name="loginform">
+                                            <div class="form-group">
+                                                <label for="username" class="logintext">Username</label>
+                                                <input type="text" class="form-control formlogin" id="username" name="username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="password" class="logintext">Password</label>
+                                                <input type="password" class="form-control formlogin" id="password" name="password">
+                                            </div>
+                                            <input type="submit" style="position: absolute; left: -9999px;">
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password">
+
+                                <a href="javascript:submitform()" style="text-decoration: none;" draggable="false">
+                                    <div class="card" style="width: 100%; margin-bottom: 20px;">
+                                        <div class="card-body text-light text-center">
+                                            <h2 class="buttonlinks">
+                                                Login
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <script>
+                                    function submitform (){
+                                            document.forms["loginform"].submit();
+                                    }
+                                </script>
+
+
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                            </form>
+                            <br/>
+            
+            
                         </div>
                     </div>
                 </div>

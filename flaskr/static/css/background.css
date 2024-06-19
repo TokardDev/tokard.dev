@@ -1,7 +1,15 @@
+/* new version */
+
 body{
     font-family: 'Exo', sans-serif;
     background: rgb(68,175,255);
     background: linear-gradient(0deg, rgba(68,175,255,1) 0%, rgba(0,132,255,1) 100%);
+}
+
+.hidden-submit {
+    opacity: 0;
+    pointer-events: none;
+    height: 0px !important;
 }
 
 @font-face {
@@ -121,6 +129,28 @@ body{
 @media (min-width: 1000px) {
     .buttonlinks {
       font-size: 3rem;
+    }
+}
+
+.logintext {
+    font-size: 5vw;
+  }
+  
+@media (min-width: 1000px) {
+    .logintext {
+      font-size: 2rem;
+    }
+}
+
+.formlogin {
+    font-size: 6vw;
+    border-radius: 1.5vw;
+  }
+  
+@media (min-width: 1000px) {
+    .formlogin {
+      font-size: 2rem;
+      border-radius: 10px;
     }
 }
 

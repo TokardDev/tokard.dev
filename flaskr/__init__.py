@@ -63,9 +63,9 @@ def create_app(test_config=None):
             link = request.form['link']
             code = request.form['code']
             if insert_url(link, code) != None:
-                flash('Link Created', 'alert-success')
+                flash(f'Link created successfully at <a href="/{code}">https://tokard.dev/{code}</a> !', 'alert-success')
             else:
-                flash('Error : maybe this name is already used?', 'alert-danger')
+                flash('Error : maybe this name is already in use or the link is invalid?', 'alert-danger')
             return render_template('add_redirect.html')
         else:
             return render_template('add_redirect.html')
@@ -77,7 +77,7 @@ def create_app(test_config=None):
             username = request.form['username']
             password = request.form['password']
 
-            auth = check_auth(username, password)
+            auth = check_auth(username.lower(), password)
 
             if not auth:
                 flash('Invalid username or password', 'alert-danger')
@@ -96,12 +96,5 @@ def create_app(test_config=None):
     def logout():
         session.pop('user', None)
         return redirect(url_for('main'))
-
-    """
-    @app.route('/add_user')
-    def add_user():
-        add_admin("tokard", "589T8\A`2x#kkN6")
-        return "User added"
-    """
 
     return app

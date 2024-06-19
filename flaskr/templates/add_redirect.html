@@ -10,40 +10,69 @@
 </head>
 <body>
     <div class="context">
-        <div style="position: absolute; width: 100%; text-align: center;">
+        <div style="position: absolute; width: 100%; text-align: center; z-index: 2;">
         {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
                         {% for category, message in messages %}
-                            <div class="alert {{ category }}">{{ message }}</div>
+                            <div class="alert {{ category }}">{{ message|safe}}</div>
                         {% endfor %}
                     {% endif %}
                 {% endwith %}
         </div>
 
         <div class=" d-flex flex-column justify-content-center align-items-center">
-            
-                <a href="/" style="z-index: 2;" draggable="false">
-                    <img class="tokalogo" style="padding-top: 5vh; z-index: 2;" draggable="false" src="{{ url_for('static', filename='imgs/tokachannel.webp') }}"/>
-                </a>
-                <div style="padding-left: 10px; padding-right: 10px; width: 100%;" class="d-flex justify-content-center">
-                    <div class="card">
-                        <div class="card-body text-light">
-                            <h1 class="card-title text-center">URL Shortener</h1>
-                            <form method="POST" action="{{ url_for('add_redirect') }}">
-                                <div class="form-group">
-                                    <label for="code">Name</label>
-                                    <input type="text" class="form-control" id="code" name="code">
+            <div class="d-flex justify-content-center" style="width: 100%; overflow-y: auto; max-height: 100vh;">
+                <div style="z-index: 1;">
+                    <div style="padding-left: 10px; padding-right: 10px; margin-top: 60px;">
+                        <a href="/" style="text-decoration: none;" draggable="false">
+                            <div class="card" style="width: 100%; margin-bottom: 60px; background: rgba(255, 255, 255, 0); border-radius: 0px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0); backdrop-filter: blur(0px);">
+                                <img src="https://tokarddev.github.io/tokard.dev/flaskr/static/imgs/tokachannel.svg" class="card-img-top" alt="logo">
+                            </div>
+                        </a>
+                        
+        
+                            <div class="card" style="width: 100%; margin-bottom: 20px;">
+                                <div class="card-body text-light">
+
+
+                                    <h1 class="card-title text-center">URL Shortener</h1>
+                                    <form method="POST" action="{{ url_for('add_redirect') }}" name="loginform">
+                                        <div class="form-group">
+                                            <label for="code" class="logintext">Name</label>
+                                            <input type="text" class="form-control formlogin" id="code" name="code">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="link" class="logintext">Link</label>
+                                            <input type="text" class="form-control formlogin" id="link" name="link">
+                                        </div>
+                                        <input type="submit" style="position: absolute; left: -9999px;">
+                                    </form>
                                 </div>
-                                <div class="form-group">
-                                    <label for="link">Link</label>
-                                    <input type="text" class="form-control" id="link" name="link">
+                            </div>
+
+                            <a href="javascript:submitform()" style="text-decoration: none;" draggable="false">
+                                <div class="card" style="width: 100%; margin-bottom: 20px;">
+                                    <div class="card-body text-light text-center">
+                                        <h2 class="buttonlinks">
+                                            Add Redirect
+                                    </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">Create Link</button>
-                            </form>
-                        </div>
+                            </a>
+
+                            <script>
+                                function submitform (){
+                                        document.forms["loginform"].submit();
+                                }
+                            </script>
+
+
+                            </div>
+                        <br/>
+        
+        
                     </div>
                 </div>
-        </div>
+            </div>
 
     </div>
     

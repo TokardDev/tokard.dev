@@ -73,9 +73,10 @@ def get_url_from_code(code):
         return "/"
 
 def insert_url(link, code):
-    # si le link ne commence pas par "https:// ou http://" on ajoute http://
     if not link.startswith("http://") and not link.startswith("https://"):
         link = "http://" + link
+    if not "." in link:
+        return None
     db = get_db()
     existing_entry = db.execute(
         'SELECT code FROM redirects WHERE code = ?', (code,)
