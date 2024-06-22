@@ -1,8 +1,16 @@
 import os
 
 from flask import Flask, render_template, request, flash, redirect, url_for, session
-from flaskr.db import get_db, get_url_from_code, insert_url, check_auth, add_admin
+from flaskr.db import get_db, insert_url, check_auth, get_commissions, get_commissions, get_url_from_code
 from functools import wraps
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = './flaskr/static/comms'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'}
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 def login_required(f):
     @wraps(f)
@@ -13,6 +21,11 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated
 
+commissions = []
+
+def update_commissions():
+    global commissions
+    commissions = get_commissions()
 
 def create_app(test_config=None):
 
@@ -36,16 +49,18 @@ def create_app(test_config=None):
     except OSError:
         pass
 
+    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
     from . import db
     db.init_app(app)
+
+    app.app_context().push()
 
     from . import shorter
     app.register_blueprint(shorter.bp)
 
     from . import faker
     app.register_blueprint(faker.bp)
-
 
     @app.route('/')
     def main():
@@ -54,6 +69,59 @@ def create_app(test_config=None):
     @app.route('/links')
     def links():
         return render_template('links.html')
+    
+    @app.route('/commissions')
+    def comms():
+        if commissions == [] :
+            update_commissions()
+
+        return render_template('commissions.html', comms=commissions)
+    
+    @app.route('/nsfw')
+    def dance():
+        return render_template('dance.html')
+    
+    @app.route('/delete', methods=['POST'])
+    @login_required
+    def delete_comms():
+        if request.method == 'POST':
+            id = request.form['id']
+            db.delete_commission(id)
+            update_commissions()
+            return redirect(url_for('comms'))
+        else:
+            return redirect(url_for('comms'))
+    
+    @app.route('/add-commissions', methods=['POST', 'GET'])
+    @login_required # utilise db.add_commission(price, description, image, titre)
+    def add_commissions():
+        if request.method == 'POST':
+            if 'price' in request.form and 'description' in request.form and 'titre' in request.form and 'file' in request.files:
+                price = request.form['price']
+                description = request.form['description']
+                titre = request.form['titre']
+                file = request.files['file']
+                if file.filename == '':
+                    flash('No selected file', 'alert-danger')
+                    return redirect(request.url)
+                if file and allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+
+                    file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+
+
+                    db.add_commission(price, description, filename, titre)
+                    flash('Commission added successfully', 'alert-success')
+                    update_commissions()
+                    return redirect(url_for('add_commissions'))
+            else:
+                flash('All fields are required', 'alert-danger')
+                return redirect(request.url)
+
+        else:
+            return render_template('addcomm.html')
+
+    
     
     @app.route('/add-redirect', methods=['POST', 'GET'])
     @login_required

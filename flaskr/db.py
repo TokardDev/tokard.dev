@@ -10,7 +10,6 @@ bcrypt = Bcrypt(api)
 def check_auth(username, password):
     db = get_db()
     result = db.execute("SELECT password FROM users WHERE username=?", (username,)).fetchone()
-    db.close()
 
     if result is not None:
         hashed_password = result[0]
@@ -91,3 +90,27 @@ def insert_url(link, code):
     db.commit()
     return code
 
+
+def add_commission(price, description, image, titre):
+    db = get_db()
+    db.execute(
+        'INSERT INTO commissions (price, description, image, titre) VALUES (?, ?, ?, ?)',
+        (price, description, image, titre)
+    )
+    db.commit()
+
+
+def get_commissions():
+    db = get_db()
+    commissions = db.execute(
+        'SELECT * FROM commissions'
+    ).fetchall()
+    return commissions
+
+def delete_commission(id):
+    db = get_db()
+    db.execute(
+        'DELETE FROM commissions WHERE id = ?',
+        (id,)
+    )
+    db.commit()

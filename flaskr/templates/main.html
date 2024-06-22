@@ -9,13 +9,12 @@
     <link rel="icon" type="image/x-icon" href="static/imgs/favicon.png">
 </head>
 <body>
-    <div class="context">
+    <div class="context" style="z-index: 1;">
         <div class="d-flex justify-content-center" style="width: 100%; overflow-y: auto; max-height: 100vh;">
-            <div style="z-index: 1;">
                 <div style="padding-left: 10px; padding-right: 10px; margin-top: 60px;">
                     <a href="/" style="text-decoration: none;" draggable="false">
                         <div class="card" style="width: 100%; margin-bottom: 60px; background: rgba(255, 255, 255, 0); border-radius: 0px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0); backdrop-filter: blur(0px);">
-                            <img src="https://tokarddev.github.io/tokard.dev/flaskr/static/imgs/tokachannel.svg" class="card-img-top" alt="logo">
+                            <img src="https://tokarddev.github.io/tokard.dev/flaskr/static/imgs/tokachannel.png" class="card-img-top" alt="logo" draggable="false">
                         </div>
                     </a>
                     
@@ -29,12 +28,30 @@
                             </div>
                         </div>
                     </a>
+
+                    <a href="/commissions" style="text-decoration: none;" draggable="false">
+                        <div class="card" style="width: 100%; margin-bottom: 20px;">
+                            <div class="card-body text-light text-center">
+                                <h2 class="buttonlinks">
+                                    Commissions Prices
+                                </h2>
+                            </div>
+                        </div>
+                    </a>
     
                     {% if 'user' in session %}
                     <a href="/add-redirect" style="text-decoration: none;" draggable="false">
                         <div class="card" style="width: 100%; margin-bottom: 20px;">
                             <div class="card-body text-light text-center">
                                 <h2 class="buttonlinks">URL Shortener</h2>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="/add-commissions" style="text-decoration: none;" draggable="false">
+                        <div class="card" style="width: 100%; margin-bottom: 20px;">
+                            <div class="card-body text-light text-center">
+                                <h2 class="buttonlinks">Add Commission</h2>
                             </div>
                         </div>
                     </a>
@@ -47,25 +64,12 @@
                         </div>
                     </a>
     
-                    {% else %}
-    
-                    <a href="/login" style="text-decoration: none;" draggable="false">
-                        <div class="card" style="width: 100%; margin-bottom: 20px;">
-                            <div class="card-body text-light text-center">
-                                <h2 class="buttonlinks">
-                                    Login
-                                </h2>
-                            </div>
-                        </div>
-                    </a>
-    
                     {% endif %}
     
                     <br/>
     
     
                 </div>
-            </div>
         </div>
         </div>
 

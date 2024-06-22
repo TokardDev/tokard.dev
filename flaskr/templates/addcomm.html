@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login | Tokard.dev</title>
+    <title>Add Commission | Tokard.dev</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}">
@@ -33,15 +33,25 @@
             
                                 <div class="card" style="width: 100%; margin-bottom: 20px;">
                                     <div class="card-body text-light">
-                                        <form method="POST" action="{{ url_for('login') }}" name="loginform">
+                                        <form method="POST" action="{{ url_for('add_commissions') }}" name="addcommform" enctype="multipart/form-data">
                                             <div class="form-group">
-                                                <label for="username" class="logintext">Username</label>
-                                                <input type="text" class="form-control formlogin" id="username" name="username">
+                                                <label for="titre" class="logintext">Title</label>
+                                                <input type="text" class="form-control formlogin" id="titre" name="titre">
                                             </div>
                                             <div class="form-group">
-                                                <label for="password" class="logintext">Password</label>
-                                                <input type="password" class="form-control formlogin" id="password" name="password">
+                                                <label for="description" class="logintext">Description</label>
+                                                <input type="text" class="form-control formlogin" id="description" name="description">
                                             </div>
+                                            <div class="form-group">
+                                                <label for="price" class="logintext">Price</label>
+                                                <input type="number" class="form-control formlogin" id="price" name="price">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="file" class="logintext">Image (png, jpg, gif, webp, svg)</label>
+                                                <input type="file" id="file" name="file">
+                                            </div>
+                                            
                                             <input type="submit" style="position: absolute; left: -9999px;">
                                         </form>
                                     </div>
@@ -51,14 +61,14 @@
                                     <div class="card" style="width: 100%; margin-bottom: 20px;">
                                         <div class="card-body text-light text-center">
                                             <h2 class="buttonlinks">
-                                                Login
+                                                Add Commission
                                         </div>
                                     </div>
                                 </a>
 
                                 <script>
                                     function submitform (){
-                                            document.forms["loginform"].submit();
+                                            document.forms["addcommform"].submit();
                                     }
                                 </script>
 
