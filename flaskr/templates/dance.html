@@ -5,49 +5,17 @@
     <title>Tokard.dev</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="static/css/backgrounddance.css">
-    
+    <script src="https://unpkg.com/htmx.org@2.0.0" integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw" crossorigin="anonymous"></script>
     <link rel="icon" type="image/x-icon" href="static/imgs/favicon.png">
 </head>
-<body class="animated-background">
-    <div class="context" style="z-index: 2; height: 100%; width: 100%; background-color: black;">
+<body>
+    <div id="tp">
+    <div class="context" style="z-index: 2; height: 100%; width: 100%; background-color: black;" id="context">
         <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <button type="button" class="btn btn-danger" id="btnLaunch">I'm 18+</button>
+            <button type="button" class="btn btn-danger btn-lg" hx-get="/get-nsfw" hx-target="#tp" id="btnLaunch">I'm 18+</button>
         </div>
-    </div>
-    <div class="context" style="z-index: 1; height: 100%; width: 100%;">
-        <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-            <div class="card" style="width: 100%; margin-bottom: 60px; background: rgba(255, 255, 255, 0); border-radius: 0px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0); backdrop-filter: blur(0px);">
-                <img src="/static/imgs/tokared.png" class="card-img-top" alt="logo" draggable="false">
-            </div>
-        </div>
-    </div>
-    <script>
-        function launch() {
-            var audio = new Audio('static/tokared.mp3');
-            audio.loop = true;
-            audio.play();
-            // hide the div with the class "context"
-            document.querySelector('.context').style.display = 'none';
-        }
-
-        document.getElementById("btnLaunch").addEventListener("click", launch);
-    </script>
-     <div class="area" >
-        <ul class="copper">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                
-        </ul>
-    </div >
+    </div>  
+    </div>  
 
 </body>
 </html>

@@ -64,7 +64,47 @@ def create_app(test_config=None):
 
     @app.route('/')
     def main():
-        return render_template('main.html')
+        # if connected, render main, if not render links
+        if 'user' in session:
+            return render_template('main.html')
+        else:
+            return render_template('links.html')
+
+    @app.route('/get-nsfw')
+    def get_nsfw():
+        if request.headers.get('HX-Request'):
+            return """
+            <link rel="stylesheet" href="static/css/backgrounddance.css">
+    <div class="context" style="z-index: 1; height: 100%; width: 100%; background-color: rgba(0, 0, 0, 0)"" >
+            <div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="card" style="width: 100%; margin-bottom: 60px; background: rgba(255, 255, 255, 0); border-radius: 0px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.0); backdrop-filter: blur(0px);">
+                    <img src="/static/imgs/tokared.png" class="card-img-top" alt="logo" draggable="false">
+                </div>
+            </div>
+        </div>
+        <script>
+                var audio = new Audio('static/t.mp3');
+                audio.loop = true;
+                audio.play();
+
+        </script>
+        <div class="area" >
+            <ul class="copper">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    
+            </ul>
+        </div >"""
+        else:
+            return redirect('/nsfw')
     
     @app.route('/links')
     def links():

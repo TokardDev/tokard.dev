@@ -210,7 +210,7 @@ body{
 }
 
 
-@keyframes animateCppr {
+@keyframes animate {
     0% {
         transform: translateY(0) translateX(0);
     }
