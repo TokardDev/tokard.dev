@@ -179,6 +179,11 @@ def create_app(test_config=None):
             return render_template('add_redirect.html')
 
 
+    @app.route('/fureast-131', methods=['POST', 'GET'])
+    def redirect_fureast():
+        return render_template('fureast.html')
+        
+
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         if request.method == 'POST':
