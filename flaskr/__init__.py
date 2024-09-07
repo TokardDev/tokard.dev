@@ -177,11 +177,6 @@ def create_app(test_config=None):
             return render_template('add_redirect.html')
         else:
             return render_template('add_redirect.html')
-
-
-    @app.route('/fureast-131', methods=['POST', 'GET'])
-    def redirect_fureast():
-        return render_template('fureast.html')
         
 
     @app.route('/login', methods=['GET', 'POST'])
@@ -209,5 +204,9 @@ def create_app(test_config=None):
     def logout():
         session.pop('user', None)
         return redirect(url_for('main'))
+    
+    @app.route('/search')
+    def search():
+        return render_template('search.html')
 
     return app
