@@ -18,4 +18,4 @@ CREATE TABLE IF NOT EXISTS commissions (
 
 CREATE TABLE IF NOT EXISTS telerts (
   nbrCard TEXT PRIMARY KEY,
-)
+);
