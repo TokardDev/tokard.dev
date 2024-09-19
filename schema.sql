@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS redirects (
+  code TEXT PRIMARY KEY,
+  link TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  username TEXT NOT NULL PRIMARY KEY,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS commissions (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  price INTEGER NOT NULL,
+  description TEXT NOT NULL,
+  image TEXT NOT NULL, 
+  titre TEXT NOT NULL
+);
