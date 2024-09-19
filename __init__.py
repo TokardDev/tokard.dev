@@ -8,6 +8,22 @@ from werkzeug.utils import secure_filename
 UPLOAD_FOLDER = './flaskr/static/comms'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif', 'webp', 'svg'}
 
+def generate_unique_id():
+    while True:
+        id_nbr = ''.join(random.choices(string.digits, k=11))
+        if checkIDNbr(id_nbr):
+            return id_nbr
+
+"""
+def generate_mrz_line_1(id_nbr, person_data):
+    return f"IDFR{person_data['last_name'][:5].upper():<5}{person_data['first_name'][:5].upper():<5}{id_nbr}"
+
+def generate_mrz_line_2(person_data):
+    birth_date = person_data['birth_date'].replace("-", "")  # Format AAAAMMJJ
+    gender = 'N'
+    return f"{birth_date}{gender}{random.choices(string.digits, k=3).upper()}"
+"""
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -208,5 +224,12 @@ def create_app(test_config=None):
     @app.route('/search')
     def search():
         return render_template('search.html')
+
+    @app.route('/api/telerts/generate-card', methods=['POST'])
+    def generateCard():
+        id_nbr = generate_unique_id()
+        return jsonify({
+            'id_nbr': id_nbr
+        })
 
     return app

@@ -15,3 +15,7 @@ CREATE TABLE IF NOT EXISTS commissions (
   image TEXT NOT NULL, 
   titre TEXT NOT NULL
 );
+
+CREATE TABLE IF NOT EXISTS telerts (
+  nbrCard TEXT PRIMARY KEY,
+)

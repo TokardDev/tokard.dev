@@ -114,3 +114,13 @@ def delete_commission(id):
         (id,)
     )
     db.commit()
+
+def checkIDNbr(idNbr):
+    db = get_db()
+    idcheck = db.execute (
+        'SELECT * FROM telerts WHERE nbrCard = ?',
+        (idNbr,)
+    )
+    if (idcheck == None):
+        return True
+    return False
